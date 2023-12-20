@@ -69,16 +69,17 @@ public class JpaMain {
 //
 //            em.flush();
 
-            Member member = em.find(Member.class, 150L);
-            member.setName("AAAAA");
+            Member member = new Member();
+            member.setUsername("C");
+
+            em.persist(member);
+
 
             //영속 -> 준영속
-            em.detach(member); //특정 엔티티만
-            em.clear(); //완전히 초기화
-            em.close(); // 종료
+//            em.detach(member); //특정 엔티티만
+//            em.clear(); //완전히 초기화
+//            em.close(); // 종료
 
-
-            System.out.println("===============");
 
 //            System.out.println("findMember.id = " + findMember.getId() );
 //            System.out.println("findMember.name = " + findMember.getName());
