@@ -22,8 +22,13 @@ public class Member {
     private String username;
 
     @ManyToOne
-    @JoinColumn(name = "TEAM_ID")
+    @JoinColumn(name = "TEAM_ID",insertable = false, updatable = false)
     private Team team;
+
+    @OneToOne
+    @JoinColumn(name = "LOCKER_ID")
+    private Locker locker;
+
 
     public Member() {
 
@@ -45,14 +50,14 @@ public class Member {
         this.username = username;
     }
 
-    public Team getTeam() {
-        return team;
-    }
-
-    public void changeTeam(Team team) {
-        this.team = team;
-
-        //연관관계 편의 메소드
-        team.getMembers().add(this);
-    }
+//    public Team getTeam() {
+//        return team;
+//    }
+//
+//    public void changeTeam(Team team) {
+//        this.team = team;
+//
+//        //연관관계 편의 메소드
+//        team.getMembers().add(this);
+//    }
 }
