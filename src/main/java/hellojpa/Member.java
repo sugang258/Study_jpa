@@ -1,17 +1,16 @@
 package hellojpa;
 
+import net.bytebuddy.asm.Advice;
+
 import javax.persistence.*;
-import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
 @SequenceGenerator(
         name ="MEMBER_SEQ_GENERATOR",
         sequenceName = "MEMBER_SEQ",
         initialValue = 1, allocationSize = 50)
-public class Member {
+public class Member extends BaseEntity{
 
     @Id
     @GeneratedValue
@@ -24,6 +23,7 @@ public class Member {
     @ManyToOne
     @JoinColumn(name = "TEAM_ID")
     private Team team;
+
 
     public Member() {
 
